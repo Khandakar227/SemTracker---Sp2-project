@@ -1,0 +1,46 @@
+#include <iostream>
+#include <map>
+#include "utils/utils.h"
+
+using namespace std;
+
+int main()
+{
+    int menu = 0;
+    show_homepage();
+    while (menu != 8)
+    {
+        menu = get_menu();
+        switch (menu)
+        {
+        case 1:
+            /* add question */
+            break;
+        case 2:
+            /* Test yourself */
+            break;
+        case 3:
+            /* Score board */
+            break;
+        case 4:
+            /* View questions */
+            break;
+        case 5:
+            /* Add attendence */
+            break;
+        case 6:
+            /* Add quiz marks */
+            break;
+        case 7:
+            /* Check Statistics */
+            break;
+        case 8:
+            cout << "Bye..." << endl;
+            break;
+        default:
+            cout << "Invalid option" << endl;
+            break;
+        }
+    }
+    return 0;
+}
