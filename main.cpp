@@ -1,46 +1,30 @@
-#include <iostream>
-#include <map>
-#include "utils/utils.h"
+#include "mainwindow.h"
 
-using namespace std;
+#include <QApplication>
+#include <QLocale>
+#include <QTranslator>
+#include <QIcon>
 
-int main()
+
+int main(int argc, char *argv[])
 {
-    int menu = 0;
-    show_homepage();
-    while (menu != 8)
-    {
-        menu = get_menu();
-        switch (menu)
-        {
-        case 1:
-            /* add question */
-            break;
-        case 2:
-            /* Test yourself */
-            break;
-        case 3:
-            /* Score board */
-            break;
-        case 4:
-            /* View questions */
-            break;
-        case 5:
-            /* Add attendence */
-            break;
-        case 6:
-            /* Add quiz marks */
-            break;
-        case 7:
-            /* Check Statistics */
-            break;
-        case 8:
-            cout << "Bye..." << endl;
-            break;
-        default:
-            cout << "Invalid option" << endl;
+    QApplication a(argc, argv);
+
+    QTranslator translator;
+    const QStringList uiLanguages = QLocale::system().uiLanguages();
+    for (const QString &locale : uiLanguages) {
+        const QString baseName = "semTracker_" + QLocale(locale).name();
+        if (translator.load(":/i18n/" + baseName)) {
+            a.installTranslator(&translator);
             break;
         }
     }
-    return 0;
+
+    QIcon appIcon("/app_logo.png");
+
+    MainWindow window;
+
+    window.show();
+    a.setWindowIcon(appIcon);
+    return a.exec();
 }

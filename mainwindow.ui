@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>809</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Home</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;
+font: 10pt &quot;URW Gothic&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QMenu{
+	color: white;
+}
+</string>
+   </property>
+   <widget class="QStackedWidget" name="mainStackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>811</width>
+      <height>551</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>400</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">height: 100%;
+width: 100%;</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="home">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	border-radius: 5px;
+	background-color: #f0f0f0;
+	color: black;
+	font-size: 10px;
+	border: 1px solid #d8d8d8ff;
+}
+QPushButton:hover {
+	background-color: white;
+}</string>
+     </property>
+     <widget class="QPushButton" name="test_memory_btn">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>110</y>
+        <width>100</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Test your
+memory</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Inkscape Files/semTracker-test-urself.svg</normaloff>../../Inkscape Files/semTracker-test-urself.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="attendence_tracker_btn">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>330</y>
+        <width>100</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Attendence
+tracker</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Inkscape Files/attendence-tracker.svg</normaloff>../../Inkscape Files/attendence-tracker.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="quiz_marks_btn">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>330</y>
+        <width>100</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Quiz marks</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Inkscape Files/semTracker-quiz-marks.svg</normaloff>../../Inkscape Files/semTracker-quiz-marks.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="statistics_btn">
+      <property name="geometry">
+       <rect>
+        <x>610</x>
+        <y>330</y>
+        <width>100</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Statistics</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Inkscape Files/semTracker-statistic.svg</normaloff>../../Inkscape Files/semTracker-statistic.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_question_btn">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>110</y>
+        <width>100</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string>Add new
+question</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Inkscape Files/semtracker-add-question.svg</normaloff>../../Inkscape Files/semtracker-add-question.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="calculate_cgpa_btn">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>110</y>
+        <width>100</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Calculate
+CGPA</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../../Inkscape Files/semTracker-calculate-cgpa.svg</normaloff>../../Inkscape Files/semTracker-calculate-cgpa.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="add_question_page">
+     <property name="styleSheet">
+      <string notr="true">*{
+	color: black;
+}
+QLabel {
+	font-size: 14px;
+	color: black;
+}
+QTextEdit {
+	border-radius: 7px;
+	background-color:  rgb(241, 241, 241);
+	font-size: 14px;
+	border: 1px solid rgb(186, 189, 182);
+}
+QTextEdit:hover {
+	background-color:  white;
+}
+QTextEdit:focus {
+	background-color:  white;
+}
+QPushButton {
+	border-radius: 7px;
+	background-color: black;
+	color: white;
+	font-weight: 900;
+}
+QPushButton:hover {
+	background-color: rgb(238, 238, 236);
+	border: 1px solid black;
+	color: black;
+}
+QPushButton:clicked {
+	background-color: rgb(238, 238, 236);
+}</string>
+     </property>
+     <widget class="QTextEdit" name="question_box">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>90</y>
+        <width>530</width>
+        <height>70</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="question_label">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>70</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Question</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="answer_box">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>220</y>
+        <width>530</width>
+        <height>70</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="answer_label">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>200</y>
+        <width>58</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Answer</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="subject_box">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>350</y>
+        <width>530</width>
+        <height>51</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="subject_label">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>330</y>
+        <width>58</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Subject</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="submit_ques_btn">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>440</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ADD</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="cancel_add_ques_btn">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>440</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>CANCEL</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>809</width>
+     <height>52</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(46, 52, 54);
+color: white;
+padding: 15px;</string>
+   </property>
+   <widget class="QMenu" name="menu_Home">
+    <property name="styleSheet">
+     <string notr="true">QMenuBar::item:pressed {
+color:blue;
+}</string>
+    </property>
+    <property name="title">
+     <string>&amp;Home</string>
+    </property>
+    <addaction name="actionAddQuestion"/>
+    <addaction name="actionCalculate_CGPA"/>
+    <addaction name="actionTest_your_memory"/>
+    <addaction name="actionAttendence_Tracker"/>
+    <addaction name="actionQuiz_marks"/>
+    <addaction name="actionStatistics"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>Subjects</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuSubjects">
+    <property name="title">
+     <string>About</string>
+    </property>
+   </widget>
+   <addaction name="menu_Home"/>
+   <addaction name="menuAbout"/>
+   <addaction name="menuSubjects"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: black;
+color: white;
+border-radius: 10px;
+padding: 5px;
+</string>
+   </property>
+  </widget>
+  <action name="actionAddQuestion">
+   <property name="text">
+    <string>Add new question</string>
+   </property>
+  </action>
+  <action name="actionCalculate_CGPA">
+   <property name="text">
+    <string>Calculate CGPA</string>
+   </property>
+  </action>
+  <action name="actionTest_your_memory">
+   <property name="text">
+    <string>Test your memory</string>
+   </property>
+  </action>
+  <action name="actionAttendence_Tracker">
+   <property name="text">
+    <string>Attendence Tracker</string>
+   </property>
+  </action>
+  <action name="actionQuiz_marks">
+   <property name="text">
+    <string>Quiz marks</string>
+   </property>
+  </action>
+  <action name="actionStatistics">
+   <property name="text">
+    <string>Statistics</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
