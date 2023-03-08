@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "questionstruct.h"
 #include <QMainWindow>
 #include <QTimer>
 
@@ -17,6 +18,8 @@ public:
     ~MainWindow();
 
 private slots:
+    bool addQuestionToDB (QuestionStruct*);
+
     void hideStatusBar();
 
     void notify(QString, QString);

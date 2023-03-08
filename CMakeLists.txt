@@ -18,6 +18,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        questionstruct.h
         ${TS_FILES}
 )
 # App logo
@@ -56,6 +57,7 @@ else()
 endif()
 
 target_link_libraries(semTracker PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_sources(semTracker PRIVATE ${APP_ICON_RESOURCE_LINUX})
 
 set_target_properties(semTracker PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -73,5 +75,3 @@ install(TARGETS semTracker
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(semTracker)
 endif()
-
-target_sources(semTracker PRIVATE ${APP_ICON_RESOURCE_LINUX})

@@ -1,5 +1,7 @@
+#include <QFile>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "questionstruct.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,6 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusbar->hide();
     statusbar_timeout = new QTimer(this);
     connect(statusbar_timeout, SIGNAL(timeout()), this, SLOT(hideStatusBar()));
+    //Set plaintText in textEdit boxes
+    ui->answer_box->setAcceptRichText(false);
+    ui->question_box->setAcceptRichText(false);
+    ui->subject_box->setAcceptRichText(false);
 }
 
 MainWindow::~MainWindow()
@@ -56,8 +62,24 @@ void MainWindow::on_statistics_btn_clicked()
 
 void MainWindow::on_submit_ques_btn_clicked()
 {
-    notify("Add button was clicked", "success");
-    ui->mainStackedWidget->setCurrentIndex(0);
+    QuestionStruct question = {
+        QUuid::createUuid(),
+        ui->question_box->toPlainText(),
+        ui->answer_box->toPlainText(),
+        ui->subject_box->toPlainText(),
+        QDateTime::currentDateTime()
+    };
+
+    if(question.subject.isEmpty() || question.answer.isEmpty() || question.question.isEmpty())
+        notify("Missing an input", "error");
+    else {
+        //Add to a file (questions.bin)
+        bool state = addQuestionToDB(&question);
+        if(state) {
+            notify("Question has been added", "success");
+            ui->mainStackedWidget->setCurrentIndex(0);
+        } else return;
+    }
 }
 
 
@@ -92,3 +114,17 @@ void MainWindow::on_actionAddQuestion_triggered()
     ui->mainStackedWidget->setCurrentIndex(1);
 }
 
+bool MainWindow::addQuestionToDB (QuestionStruct *question) {
+    QFile db("questions.bin");
+    if(!db.open(QIODevice::WriteOnly | QIODevice::Append)) {
+        notify("Error while opening the database", "error");
+        return false;
+    }
+    qint64 byteWritten = db.write(reinterpret_cast<const char*>(&question), sizeof(QuestionStruct));
+    if(byteWritten == -1) {
+        notify("Error while writing to the database", "error");
+        return false;
+    }
+    db.close();
+    return true;
+}

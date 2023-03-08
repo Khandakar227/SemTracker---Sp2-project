@@ -50,7 +50,7 @@ font: 10pt &quot;URW Gothic&quot;;</string>
 width: 100%;</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="home">
      <property name="styleSheet">
@@ -278,6 +278,9 @@ QPushButton:clicked {
         <width>530</width>
         <height>70</height>
        </rect>
+      </property>
+      <property name="tabChangesFocus">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="answer_label">
