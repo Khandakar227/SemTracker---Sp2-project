@@ -42,6 +42,14 @@ private slots:
 
     void on_actionAddQuestion_triggered();
 
+    void on_actionView_Questions_triggered();
+
+    void on_actionView_Questions_2_triggered();
+
+    void on_mainStackedWidget_currentChanged(int arg1);
+
+    void on_actionTest_your_memory_triggered();
+
 private:
     Ui::MainWindow *ui;
     QTimer *statusbar_timeout;
