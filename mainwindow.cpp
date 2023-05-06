@@ -160,7 +160,7 @@ bool MainWindow::addQuestionToDB (QuestionStruct *question) {
         qDebug() << "Subject file exists";
 
         QDataStream in(&subject_db);
-//        in.setVersion(QDataStream::Qt_6_4);
+        //        in.setVersion(QDataStream::Qt_6_4);
 
         in >> subject_set;
 
@@ -197,7 +197,7 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
         layout->setAlignment(Qt::AlignCenter);
 
         QFile question_db("questions.bin");
-    //    qDebug() << question_db.exists();
+        //    qDebug() << question_db.exists();
         if(!question_db.open(QFile::ReadOnly | QFile::Text))
         {
             notify("Error while opening the database. No such file", "error");
@@ -211,7 +211,7 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
 
         while (!in.atEnd()) {
             in >> q.id >> q.question >> q.answer >> q.subject >> q.created_at;
-    //        qDebug() << "Read data:" << q.question << q.answer << q.subject;
+            //        qDebug() << "Read data:" << q.question << q.answer << q.subject;
             QuestionCard* q_card = new QuestionCard();
             q_card->setQuestion(q, i);
             layout->addWidget(q_card);
@@ -221,7 +221,7 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
         ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         ui->scrollArea->setWidget(scrollWidget);
         question_db.close();
-     }
+    }
     else if (arg1 == 3) {
         QWidget *scrollWidget = new QWidget();
         QVBoxLayout *layout = new QVBoxLayout(scrollWidget);
@@ -232,7 +232,15 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
         label->setStyleSheet("font-size: 1.2rem;font-weight:bold;padding-bottom:1rem;");
         layout->addWidget(label);
 
-        TestSubjectButton* all_subject_btn = new TestSubjectButton("All Subject");
+        QPushButton* all_subject_btn = new QPushButton("All Subject", this);
+
+        all_subject_btn->setStyleSheet("QPushButton{cursor:pointer;border-radius:10px;color: white;background-color: black;height: 60px;border: 1px solid black;margin: 1rem auto;}QPushButton:hover{color:black;background-color: white;}");
+        all_subject_btn->setMaximumWidth(800);
+
+        connect(all_subject_btn, &QPushButton::clicked, this, []() {
+            qInfo() << "All Subject";
+        });
+
         layout->addWidget(all_subject_btn);
 
         QFile subject_db("subjects.bin");
@@ -242,13 +250,19 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
         if(subject_db.open(QFile::ReadOnly | QFile::Text)) {
             qInfo() << "Subject file exists";
             QDataStream in(&subject_db);
-    //        in.setVersion(QDataStream::Qt_6_4);
+            //        in.setVersion(QDataStream::Qt_6_4);
             in >> subject_set;
 
             QSet<QString>::iterator i;
             for (i = subject_set.begin(); i != subject_set.end(); ++i) {
-                qInfo() << *i << "\n";
-                TestSubjectButton* sub_btn = new TestSubjectButton(*i);
+                QPushButton* sub_btn = new QPushButton(*i, this);
+
+                sub_btn->setStyleSheet("QPushButton{cursor:pointer;border-radius:10px;color: white;background-color: black;height: 60px;border: 1px solid black;margin: 1rem auto;}QPushButton:hover{color:black;background-color: white;}");
+                sub_btn->setMaximumWidth(800);
+
+                connect(sub_btn, &QPushButton::clicked, this, [sub_btn]() {
+                    qInfo() << sub_btn->text();
+                });
                 layout->addWidget(sub_btn);
             }
 

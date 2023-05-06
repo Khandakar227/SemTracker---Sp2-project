@@ -25,3 +25,4 @@ void TestSubjectButton::on_sub_btn_clicked()
 {
     qInfo() << subjectName;
 }
+
