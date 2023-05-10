@@ -21,6 +21,7 @@ set(PROJECT_SOURCES
         questionstruct.h
         questioncard.h questioncard.cpp
         testsubjectbutton.h testsubjectbutton.cpp
+        examquestioncard.h examquestioncard.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

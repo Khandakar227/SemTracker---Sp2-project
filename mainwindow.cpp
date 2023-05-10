@@ -5,6 +5,7 @@
 #include<QDebug>
 #include<QSet>
 #include<QScrollArea>
+#include<QVector>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "questionstruct.h"
@@ -157,7 +158,7 @@ bool MainWindow::addQuestionToDB (QuestionStruct *question) {
     //// Check if subject file exist
     if(subject_db.open(QFile::ReadOnly)) {
 
-        qDebug() << "Subject file exists";
+        qInfo() << "Subject file exists";
 
         QDataStream in(&subject_db);
         //        in.setVersion(QDataStream::Qt_6_4);
@@ -197,7 +198,6 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
         layout->setAlignment(Qt::AlignCenter);
 
         QFile question_db("questions.bin");
-        //    qDebug() << question_db.exists();
         if(!question_db.open(QFile::ReadOnly | QFile::Text))
         {
             notify("Error while opening the database. No such file", "error");
@@ -260,9 +260,13 @@ void MainWindow::on_mainStackedWidget_currentChanged(int arg1)
                 sub_btn->setStyleSheet("QPushButton{cursor:pointer;border-radius:10px;color: white;background-color: black;height: 60px;border: 1px solid black;margin: 1rem auto;}QPushButton:hover{color:black;background-color: white;}");
                 sub_btn->setMaximumWidth(800);
 
-                connect(sub_btn, &QPushButton::clicked, this, [sub_btn]() {
+                connect(sub_btn, &QPushButton::clicked, this, [this, sub_btn]() {
+                    QVector<QuestionStruct> qs;
+                    this->getQuestions(qs);
+                    ui->mainStackedWidget->setCurrentIndex(4);
                     qInfo() << sub_btn->text();
                 });
+
                 layout->addWidget(sub_btn);
             }
 
@@ -280,3 +284,29 @@ void MainWindow::on_actionTest_your_memory_triggered()
     ui->mainStackedWidget->setCurrentIndex(3);
 }
 
+
+void MainWindow::getQuestions(QVector<QuestionStruct> qs)
+{
+    QFile question_db("questions.bin");
+
+    if(!question_db.open(QFile::ReadOnly | QFile::Text))
+    {
+        notify("Error while opening the database. No such file", "error");
+        ui->status_label->setText("No data found");
+        return;
+    }
+
+    QDataStream in(&question_db);
+    QuestionStruct q;
+
+    int i = 1;
+
+    while (!in.atEnd()) {
+        in >> q.id >> q.question >> q.answer >> q.subject >> q.created_at;
+//        qInfo() << "Read data:" << q.question << q.answer << q.subject;
+        qs.push_back(q);
+        i++;
+    }
+    question_db.close();
+    return;
+}

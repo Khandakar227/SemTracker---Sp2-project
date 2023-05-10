@@ -4,6 +4,8 @@
 #include "questionstruct.h"
 #include <QMainWindow>
 #include <QTimer>
+#include<QVector>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -49,6 +51,8 @@ private slots:
     void on_mainStackedWidget_currentChanged(int arg1);
 
     void on_actionTest_your_memory_triggered();
+
+   void getQuestions(QVector<QuestionStruct> qs);
 
 private:
     Ui::MainWindow *ui;
