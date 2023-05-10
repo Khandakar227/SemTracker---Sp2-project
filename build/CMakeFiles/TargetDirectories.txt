@@ -1,8 +1,0 @@
-/home/shakib/Dev/semTracker/build/CMakeFiles/SemTracker.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/edit_cache.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/rebuild_cache.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/list_install_components.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/install.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/install/local.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/install/strip.dir
-/home/shakib/Dev/semTracker/build/CMakeFiles/SemTracker_autogen.dir
