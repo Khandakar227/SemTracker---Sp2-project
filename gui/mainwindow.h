@@ -52,7 +52,11 @@ private slots:
 
     void on_actionTest_your_memory_triggered();
 
-   void getQuestions(QVector<QuestionStruct> qs);
+   void getQuestions(QVector<QuestionStruct> *qs);
+
+   void set_exam_questions(QVector<QuestionStruct> qs);
+
+   void on_exam_sub_btn_clicked();
 
 private:
     Ui::MainWindow *ui;
