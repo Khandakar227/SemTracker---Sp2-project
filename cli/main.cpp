@@ -1,13 +1,20 @@
 #include <iostream>
 #include <map>
 #include "utils/utils.h"
+#include <filesystem>
 
+namespace fs = std::filesystem;
 using namespace std;
 
 int main()
 {
     int menu = 0;
     show_homepage();
+    
+    fs::create_directories(questionsDirectory);
+    fs::create_directories(answersDirectory);
+    fs::create_directories(subjectsDirectory);
+    
     while (menu != 8)
     {
         menu = get_menu();
