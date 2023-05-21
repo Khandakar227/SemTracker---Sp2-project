@@ -68,6 +68,22 @@ Question get_question_from_file(string fileName)
     return question;
 }
 
+string get_multiline_input()
+{
+    string input = "", output = "";
+
+    while (input != "[END]")
+    {
+        getline(cin, input);
+
+        if (input == "[END]")
+            break;
+        output += input + "\n";
+    }
+
+    return output;
+}
+
 void show_homepage()
 {
     cout << CYAN_COLOR << " _______  _______  _______ _________ _______  _______  _______  _        _______  _______ \n"
@@ -93,8 +109,8 @@ int get_menu()
          << endl;
     cout << " 1. Add a question." << endl;
     cout << " 2. Test yourself." << endl;
-    cout << " 3. Score board." << endl;
-    cout << " 4. View questions." << endl;
+    cout << " 3. View questions." << endl;
+    cout << " 4. Calculate CGPA." << endl;
     cout << " 5. Add attendence." << endl;
     cout << " 6. Add quiz marks." << endl;
     cout << " 7. Check statistics." << endl;
@@ -129,7 +145,7 @@ void add_question()
 
     cout << "question: ";
 
-    string input;
+    string input = "";
     // Question
     while (input != "[END]")
     {
@@ -194,7 +210,7 @@ void open_in_gui()
     system("/home/shakib/Dev/semTracker/build-semTracker-gui-Desktop-Debug/semTracker-gui");
 }
 
-void test_yourself(void)
+void test_yourself()
 {
     cout << CYAN_COLOR << "Test your memory" << DEFAULT_COLOR << endl;
 
@@ -206,8 +222,94 @@ void test_yourself(void)
             fileNames.push_back(entry.path().filename());
         }
     }
+    cout << CYAN_COLOR << " There are " << fileNames.size() << " questions. How many questions would you like to answer?" << DEFAULT_COLOR << endl;
+    long long numOfQuestiontoAnswer = fileNames.size();
 
+    cin >> numOfQuestiontoAnswer;
+
+    while (numOfQuestiontoAnswer > fileNames.size())
+    {
+        cout << RED_COLOR << "You provided invalid number of question. Try again" << DEFAULT_COLOR << endl;
+        cin >> numOfQuestiontoAnswer;
+    }
     random_device rd;
     mt19937 generator(rd());
     shuffle(fileNames.begin(), fileNames.end(), generator);
+
+    vector<string> userAnswer;
+    vector<Question> questions;
+    questions.resize(numOfQuestiontoAnswer);
+    userAnswer.resize(numOfQuestiontoAnswer);
+
+    for (long long i = 0; i < numOfQuestiontoAnswer; i++)
+    {
+        Question question = get_question_from_file(fileNames[i]);
+
+        questions[i] = question;
+
+        cout << i + 1 << ". " << question.question;
+        
+        userAnswer[i] = get_multiline_input();
+    }
+    
+    for (long long i = 0; i < numOfQuestiontoAnswer; i++)
+    {
+        if (userAnswer[i].length() > 2) {
+            cout << "Question: " << questions[i].question;
+            cout << YELLOW_COLOR << "Your answer: "<< userAnswer[i] << DEFAULT_COLOR << endl;
+            cout << CYAN_COLOR << "Correct answer: "<< questions[i].answer << DEFAULT_COLOR << endl;
+
+            string command = "python3 check_answer.py " + string("\"") + questions[i].answer + string("\" ") + string("\"") + userAnswer[i] + string("\"");
+            system(command.c_str());
+        }
+    }
+
+
+    
+}
+// Created by Fateen
+float calculate_cgpa()
+{
+    int subcount;
+    cout << "Enter the number of your subject:";
+    cin >> subcount;
+    vector<float> grade, credit;
+    float _grade_, _credit_, creditsum = 0, grademultiplier = 0;
+    string order;
+    char coursename[20];
+
+    for (int i = 0; i < subcount; i++)
+    {
+        if (i + 1 == 1)
+        {
+            order = "st";
+        }
+        else if ((i + 1) == 2)
+        {
+            order = "nd";
+        }
+        else if ((i + 1) == 3)
+        {
+            order = "rd";
+        }
+        else
+        {
+            order = "th";
+        }
+
+        cout << "Enter the name of the " << i + 1 << order << " coursename: ";
+
+        scanf(" %[^\n]", coursename);
+
+        cout << "Enter the grade of the " << i + 1 << order << " course: ";
+
+        cin >> _grade_;
+        cout << "Enter the credit of the " << i + 1 << order << " course: ";
+        cin >> _credit_;
+        creditsum += _credit_;
+        grademultiplier += (_grade_ * _credit_);
+        grade.push_back(_grade_);
+        credit.push_back(_credit_);
+    }
+    return (grademultiplier / creditsum);
 }

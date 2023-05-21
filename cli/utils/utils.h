@@ -23,6 +23,8 @@ void show_homepage(void);
 void get_question(void);
 void open_in_gui(void);
 void test_yourself(void);
+float calculate_cgpa();
+
 
 Question get_question_from_file(string fileName);
 

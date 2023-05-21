@@ -43,17 +43,19 @@ int main()
             break;
         case 2:
             /* Test yourself */
+            test_yourself();
+            pause();
             break;
         case 3:
-            /* Score board */
-            break;
-        case 4:
             /* View questions */
             get_question();
             pause();
             break;
+        case 4:
+            /* Calculate CGPA */
+            calculate_cgpa();
+            break;
         case 5:
-            /* Add attendence */
             break;
         case 6:
             /* Add quiz marks */

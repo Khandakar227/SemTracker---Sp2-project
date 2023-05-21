@@ -8,6 +8,7 @@
 #include <QVector>
 #include <QTextEdit>
 #include <QVBoxLayout>
+#include<QIcon>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "examquestioncard.h"
