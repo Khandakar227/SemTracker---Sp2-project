@@ -10,3 +10,4 @@ extern string RED_COLOR;
 extern string CYAN_COLOR;
 extern string WHITE_COLOR;
 extern string GREEN_COLOR;
+extern string BOLD_COLOR;

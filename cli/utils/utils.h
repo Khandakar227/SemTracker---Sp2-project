@@ -18,12 +18,16 @@ typedef struct __Question
 } Question;
 
 // List prototypes of all functions in utils.cpp here: 
-void add_question (void); 
+void add_question (void);
+void remove_question (void);
 void show_homepage(void);
 void get_question(void);
 void open_in_gui(void);
 void test_yourself(void);
-float calculate_cgpa();
+float calculate_cgpa(void);
+void scehdule_notifier(void);
+void attendence_quiz_status(void);
+string get_current_time_in_HM_format();
 
 
 Question get_question_from_file(string fileName);

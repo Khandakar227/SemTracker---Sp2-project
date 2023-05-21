@@ -42,31 +42,36 @@ int main()
             pause();
             break;
         case 2:
-            /* Test yourself */
-            test_yourself();
-            pause();
-            break;
-        case 3:
             /* View questions */
             get_question();
             pause();
             break;
+        case 3:
+            /* Delete questions */
+            remove_question();
+            break;
         case 4:
+            /* Test yourself */
+            test_yourself();
+            pause();
+            break;
+        case 5:
             /* Calculate CGPA */
             calculate_cgpa();
             break;
-        case 5:
-            break;
         case 6:
-            /* Add quiz marks */
+           /* Attendence and quiz marks tracker */
+            attendence_quiz_status();
             break;
         case 7:
-            /* Check Statistics */
-            break;
-        case 8:
             guiThread = thread(open_in_gui);
             system("clear");
             cout << "Opening app in graphical interface" << endl;
+            break;
+        case 8:
+            scehdule_notifier();
+            cout << endl;
+            pause();
             break;
         case 99:
             cout << "Bye..." << endl;
