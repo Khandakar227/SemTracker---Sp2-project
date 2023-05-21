@@ -1,0 +1,1 @@
+Multithreading is an ability of a platform (Operating System, Virtual Machine  etc.) or application to create a process that consists of multiple threads of execution (threads). A thread of execution is the smallest sequence of programming instructions that can be managed independently by a scheduler. These threads can run parallel and it can increase efficiency of programs.

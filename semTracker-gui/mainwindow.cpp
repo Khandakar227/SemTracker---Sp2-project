@@ -7,7 +7,7 @@
 #include <QScrollArea>
 #include <QVector>
 #include <QTextEdit>
-#include <QBoxLayout>
+#include <QVBoxLayout>
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "examquestioncard.h"
@@ -337,7 +337,7 @@ void MainWindow::on_exam_sub_btn_clicked()
     {
         QWidget* examquestioncard = new QWidget(this);
 
-        QBoxLayout* examquestioncard_layout = new QBoxLayout(examquestioncard);
+        QVBoxLayout* examquestioncard_layout = new QVBoxLayout(examquestioncard);
 
         QLabel* question_label = new QLabel(this);
         QTextEdit* answer_box = new QTextEdit(widget);

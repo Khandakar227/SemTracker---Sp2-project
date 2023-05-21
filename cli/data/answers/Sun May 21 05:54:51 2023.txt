@@ -1,0 +1,1 @@
+std::mt19937(since C++11) class is a very efficient pseudo-random number generator and is defined in a random header file. It produces 32-bit pseudo-random numbers using the well-known and popular algorithm named Mersenne twister algorithm. std::mt19937 class is basically a type of std::mersenne_twister_engine class.
